@@ -1,0 +1,47 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>{% block title %}Auto Hogar{% endblock title %}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="">
+	<link type="text/css" rel="stylesheet" href="{% static 'web/css/materialize.min.css'%}"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'web/css/main.css' %}">
+
+	{% block extraHead %}{% endblock extraHead %}
+
+</head>
+<body>
+	<nav class="light-blue darken-4" role="navigation">
+		<div class="nav-wrapper container"><a id="logo-container" href="{% url 'index' %}" class="brand-logo"><i class="material-icons">home</i> Auto Hogar</a>
+			<ul class="right hide-on-med-and-down">
+				<li><a href="#">Navbar Link</a></li>
+			</ul>
+			<ul id="nav-mobile" class="side-nav">
+				<li><a href="#">Navbar Link</a></li>
+			</ul>
+			<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+		</div>
+	</nav>
+	<main>
+		{% block content %}{% endblock content %}
+	</main>
+	<footer class="page-footer orange" style="padding-top: 0px;">
+		<div class="footer-copyright">
+			<div class="container">
+				Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+			</div>
+		</div>
+	</footer>
+	<script type="text/javascript" src="{% static 'web/js/vendor/jquery-3.1.1.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'web/js/vendor/materialize.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'web/js/main.js' %}"></script>
+
+	{% block extraScripts %}{% endblock extraScripts %}
+</body>
+</html>
