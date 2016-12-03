@@ -7,25 +7,137 @@
 
 {% block content %}
 <div class="container">
-	<div class="section">
-		<!--   Icon Section   -->
+	<div class="section" style="padding-left:10px;padding-right:10px;">
 		<div class="row">
-			<div class="col s12 m6">
-				<div class="icon-block">
-					<h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
-					<h5 class="center">Dispositivos</h5>
-					<p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+			<h3 class="center-align"><strong>Dispositivos</strong></h3>
+		</div>
+		<div class="divider"></div>
+		{% for group in group_list %}
+			<div class="row">
+				{% for d in group %}
+					{% include "web/light.html" %}
+				{% endfor %}
+			</div>
+		{% endfor %}
+	</div>	
+</div>	
+{% endblock content %}
+
+
+{#
+<div class="row">
+			<div class="col s12 m4 l3">
+				<div class="card sticky-action hoverable">
+					<div class="card-image">
+						<div class="activador red darken-2" style="width:100%;height:120px;">
+							<h5 class="center-align" style="margin:0px;">
+								<i class="material-icons" style="font-size:120px;">lightbulb_outline</i>
+							</h5>
+						</div>
+					</div>
+					<div class="card-content">
+						<span class="card-title activator grey-text text-darken-4">Luces living<i class="material-icons right">more_vert</i></span>
+					</div>
+					<div class="card-reveal">
+						<span class="card-title grey-text text-darken-4">Luces living<i class="material-icons right">close</i></span>
+						<p>I am a very simple card. I am good at containing small bits of information.I am convenient because I require little markup to use effectively.</p>
+					</div>
+					<div class="card-action">
+						<div class="switch right-align" id="switchRed">
+							<label>Off<input type="checkbox"><span class="lever"></span>On</label>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="col s12 m6">
-				<div class="icon-block">
-					<h2 class="center light-blue-text"><i class="material-icons">playlist_add_check</i></h2>
-					<h5 class="center">Listas programadas</h5>
-					<p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+			<div class="col s12 m4 l3">
+				<div class="card sticky-action hoverable">
+					<div class="card-image">
+						<div class="activador blue lighten-2" style="width:100%;height:120px;">
+							<h5 class="center-align" style="margin:0px;">
+								<i class="material-icons" style="font-size:120px;">directions_car</i>
+							</h5>
+						</div>
+					</div>
+					<div class="card-content">
+						<span class="card-title activator grey-text text-darken-4">Garage<i class="material-icons right">more_vert</i></span>
+					</div>
+					<div class="card-reveal">
+						<span class="card-title grey-text text-darken-4">Garage<i class="material-icons right">close</i></span>
+						<p>I am a very simple card. I am good at containing small bits of information.I am convenient because I require little markup to use effectively.</p>
+					</div>
+					<div class="card-action">
+						<a href="#">Abrir</a>
+						<a href="#" class='right' style="margin-right:0px;">Cerrar</a>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m4 l3">
+				<div class="card sticky-action hoverable">
+					<div class="card-image">
+						<div class="activador deep-purple lighten-2" style="width:100%;height:120px;">
+							<h5 class="center-align" style="margin:0px;">
+								<i class="material-icons" style="font-size:120px;">ac_unit</i>
+							</h5>
+						</div>					
+					</div>
+					<div class="card-content">
+						<span class="card-title activator grey-text text-darken-4">Aire<i class="material-icons right">more_vert</i></span>
+					</div>
+					<div class="card-reveal">
+						<span class="card-title grey-text text-darken-4">Aire<i class="material-icons right">close</i></span>
+						<p>I am a very simple card. I am good at containing small bits of information.I am convenient because I require little markup to use effectively.</p>
+					</div>
+					<div class="card-action">
+						<a href="#">Encender</a>
+						<a href="#" class='right' style="margin-right:0px;">Apagar</a>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<br><br>
-</div>	
-{% endblock content %}
+		<div class="row">
+			<div class="col s12 m4 l3">
+				<div class="card sticky-action hoverable">
+					<div class="card-image">
+						<div class="activador red lighten-2" style="width:100%;height:120px;">
+							<h5 class="center-align" style="margin:0px;">
+								<i class="material-icons" style="font-size:120px;">lock</i>
+							</h5>
+						</div>
+					</div>
+					<div class="card-content">
+						<span class="card-title activator grey-text text-darken-4">Alarma<i class="material-icons right">more_vert</i></span>
+					</div>
+					<div class="card-reveal">
+						<span class="card-title grey-text text-darken-4">Alarma<i class="material-icons right">close</i></span>
+						<p>I am a very simple card. I am good at containing small bits of information.I am convenient because I require little markup to use effectively.</p>
+					</div>
+					<div class="card-action">
+						<a href="#">Encender</a>
+						<a href="#" class='right' style="margin-right:0px;">Apagar</a>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m4 l3">
+				<div class="card sticky-action hoverable">
+					<div class="card-image">
+						<div class="activador red lighten-2" style="width:100%;height:120px;">
+							<h5 class="center-align" style="margin:0px;">
+								<i class="material-icons" style="font-size:120px;">exit_to_app</i>
+							</h5>
+						</div>
+					</div>
+					<div class="card-content">
+						<span class="card-title activator grey-text text-darken-4">Salir<i class="material-icons right">more_vert</i></span>
+					</div>
+					<div class="card-reveal">
+						<span class="card-title grey-text text-darken-4">Salir<i class="material-icons right">close</i></span>
+						<p>I am a very simple card. I am good at containing small bits of information.I am convenient because I require little markup to use effectively.</p>
+					</div>
+					<div class="card-action">
+						<a href="#">Encender</a>
+						<a href="#" class='right' style="margin-right:0px;">Apagar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+#}
