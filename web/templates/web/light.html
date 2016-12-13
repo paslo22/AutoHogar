@@ -1,12 +1,12 @@
 <div class="col s12 m4 l3">
-	<div class="card sticky-action hoverable">
+	<div class="card light sticky-action hoverable" id="{{d.id}}">
 		<div class="card-image">
-			<div class="activador red lighten-2" style="width:100%;height:120px;{% if not d.luz.estado %}display:none;{% endif %}">
+			<div class="activador red lighten-2" style="width:100%;height:120px;{% if not d.luz.estado %}display:none;{% endif %}" id="encendido">
 				<h5 class="center-align" style="margin:0px;">
 					<i class="material-icons" style="font-size:120px;transform:rotate(180deg);">wb_incandescent</i>
 				</h5>
 			</div>
-			<div class="activador red darken-2" style="width:100%;height:120px;{% if d.luz.estado %}display:none;{% endif %}">
+			<div class="activador red darken-2" style="width:100%;height:120px;{% if d.luz.estado %}display:none;{% endif %}" id="apagado">
 				<h5 class="center-align" style="margin:0px;">
 					<i class="material-icons" style="font-size:120px;">lightbulb_outline</i>
 				</h5>
@@ -22,9 +22,9 @@
 		<div class="card-action">
 			<div class="switch right-align" id="switchRed">
 				{% if d.luz.estado %}
-					<label>Off<input checked="true" type="checkbox"><span class="lever"></span>On</label>
+					<label>Off<input class="estado" checked type="checkbox"><span class="lever"></span>On</label>
 				{% else %}
-					<label>Off<input type="checkbox"><span class="lever"></span>On</label>
+					<label>Off<input class="estado" type="checkbox"><span class="lever"></span>On</label>
 				{% endif %}
 			</div>
 		</div>
