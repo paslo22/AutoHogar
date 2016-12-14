@@ -14,7 +14,7 @@ def luz(request):
 	#ser = serial.Serial('/dev/ttyACM0',9600)
 	id = request.POST.get('id')
 	luz = Luz.objects.get(pk=id)
-	if estado:
+	if luz.estado:
 		ser.write('ap')
 	else:
 		ser.write('p')
