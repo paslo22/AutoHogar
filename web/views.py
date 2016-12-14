@@ -21,4 +21,5 @@ def luz(request):
 	else:
 		ser.write(b'p')
 		luz.estado = True
+	luz.save()
 	return HttpResponse(request)
