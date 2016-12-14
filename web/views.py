@@ -11,11 +11,13 @@ def index(request):
 
 @csrf_exempt
 def luz(request):
-	#ser = serial.Serial('/dev/ttyACM0',9600)
+	ser = serial.Serial('/dev/ttyACM0',9600)
 	id = request.POST.get('id')
 	luz = Luz.objects.get(pk=id)
 	if luz.estado:
 		ser.write('ap')
+		luz.estado = False
 	else:
 		ser.write('p')
+		luz.estado = True
 	return HttpResponse(request)
