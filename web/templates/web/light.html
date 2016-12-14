@@ -22,9 +22,9 @@
 		<div class="card-action">
 			<div class="switch right-align" id="switchRed">
 				{% if d.luz.estado %}
-					<label>Off<input class="estado" checked type="checkbox"><span class="lever"></span>On</label>
+					<label>Off<input class="estado" value="{{d.luz.id}}" checked type="checkbox"><span class="lever"></span>On</label>
 				{% else %}
-					<label>Off<input class="estado" type="checkbox"><span class="lever"></span>On</label>
+					<label>Off<input class="estado" value="{{d.luz.id}}" type="checkbox"><span class="lever"></span>On</label>
 				{% endif %}
 			</div>
 		</div>

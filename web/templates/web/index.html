@@ -14,11 +14,11 @@
 		<div class="divider"></div>
 		<div class="row">
 			{% for d in disp %}
-				{% if d.luz %}
-					{% include "web/light.html" %}
-				{% endif %}
 				{% if d.garage %}
 					{% include "web/garage.html" %}
+				{% endif %}
+				{% if d.luz %}
+					{% include "web/light.html" %}
 				{% endif %}
 			{% endfor %}
 		</div>

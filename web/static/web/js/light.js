@@ -3,8 +3,11 @@ $(document).ready(function() {
 	$.each(lights, function(index, val) {
 		var light = this
 		$('.estado',light).change(function(event) {
-			$('#encendido',light).toggle("slide", { direction: "right" }, 1000);
-			$('#apagado',light).toggle("slide", { direction: "right" }, 1000);
+			$('#encendido',light).toggle(1000);
+			$('#apagado',light).toggle(1000);
+			$.post('luz/', {id:$(this).prop('value')}, function(data, textStatus, xhr) {
+				console.log('apagado')
+			});
 		});
 	});
 });
