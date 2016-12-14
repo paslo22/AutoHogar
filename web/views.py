@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 
-import serial
+import serial,time
 
 from .models import *
 
@@ -14,10 +14,11 @@ def luz(request):
 	ser = serial.Serial('/dev/ttyACM0',9600)
 	id = request.POST.get('id')
 	luz = Luz.objects.get(pk=id)
+	time.sleep(2)
 	if luz.estado:
-		ser.write('ap')
+		ser.write(b'ap')
 		luz.estado = False
 	else:
-		ser.write('p')
+		ser.write(b'p')
 		luz.estado = True
 	return HttpResponse(request)
