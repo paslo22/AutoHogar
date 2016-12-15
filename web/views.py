@@ -6,12 +6,13 @@ import serial,time
 
 from .models import *
 
+ser = serial.Serial('/dev/ttyACM0',9600)
+
 def index(request):
 	return render(request, 'web/index.html', {'disp':Dispositivo.objects.all()})
 
 @csrf_exempt
 def luz(request):
-	ser = serial.Serial('/dev/ttyACM0',9600)
 	id = request.POST.get('id')
 	luz = Luz.objects.get(pk=id)
 	time.sleep(2)
@@ -33,11 +34,9 @@ def garage(request):
 	time.sleep(2)
 	if op == 'abrir':
 		ser.write(b'a')
-		print('abrir')
 		garage.estado = True
 	else:
 		ser.write(b'c')
-		print('cerrar')
 		garage.estado = False
 	garage.save()
 	return HttpResponse(request)
