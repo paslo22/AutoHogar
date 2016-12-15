@@ -4,12 +4,10 @@ $(document).ready(function() {
 		var garage = this
 		$('.abrirG',garage).click(function(event) {
 			event.preventDefault();
-			console.log();
 			$.post('garage/', {id:$('input',$(this)).val(),op:'abrir'});
 		});
 		$('.cerrarG',garage).click(function(event) {
 			event.preventDefault();
-			console.log();
 			$.post('garage/', {id:$('input',$(this)).val(),op:'cerrar'});
 		});
 	});
