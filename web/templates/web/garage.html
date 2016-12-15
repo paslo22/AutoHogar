@@ -1,5 +1,5 @@
 <div class="col s12 m4 l3">
-	<div class="card sticky-action hoverable">
+	<div class="card garage sticky-action hoverable">
 		<div class="card-image">
 			<div class="activador blue lighten-2" style="width:100%;height:120px;">
 				<h5 class="center-align" style="margin:0px;">
@@ -15,13 +15,8 @@
 			<p>I am a very simple card. I am good at containing small bits of information.I am convenient because I require little markup to use effectively.</p>
 		</div>
 		<div class="card-action">
-			{% if d.garage.estado %}
-				<a href="" >Abrir</a>
-				<a href="" class='right' style="margin-right:0px;">Cerrar</a>
-			{% else %}
-				<a href="" >Abrir</a>
-				<a href="" class='right' style="margin-right:0px;">Cerrar</a>
-			{% endif %}
+			<a href="" class='abrirG'><input hidden value='{{d.garage.id}}'>Abrir</a>
+			<a href="" class='cerrarG right' style="margin-right:0px;">Cerrar</a>
 		</div>
 	</div>
 </div>

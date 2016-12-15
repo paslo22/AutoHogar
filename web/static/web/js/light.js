@@ -5,9 +5,7 @@ $(document).ready(function() {
 		$('.estado',light).change(function(event) {
 			$('#encendido',light).toggle(1000);
 			$('#apagado',light).toggle(1000);
-			$.post('luz/', {id:$(this).prop('value')}, function(data, textStatus, xhr) {
-				console.log('apagado')
-			});
+			$.post('luz/', {id:$(this).prop('value')});
 		});
 	});
 });
