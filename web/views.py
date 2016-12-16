@@ -17,11 +17,12 @@ def luz(request):
 	luz = Luz.objects.get(pk=id)
 	time.sleep(2)
 	if luz.estado:
-		ser.write(b'ap')
+		sal = luz.nombDisp + 'ap'
 		luz.estado = False
 	else:
-		ser.write(b'p')
+		sal = luz.nombDisp + 'p'
 		luz.estado = True
+	ser.write(b'%s' % (sal))
 	luz.save()
 	return HttpResponse(request)
 
