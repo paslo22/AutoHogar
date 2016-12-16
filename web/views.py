@@ -17,7 +17,7 @@ def luz(request):
 	luz = Luz.objects.get(pk=id)
 	time.sleep(2)
 	if luz.estado:
-		sal = luz.nombDisp + 'ap'
+		sal = luz.nombDisp + 'a'
 		luz.estado = False
 	else:
 		sal = luz.nombDisp + 'p'
