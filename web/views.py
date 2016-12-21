@@ -50,4 +50,4 @@ def termometro(request):
 	temperatura = ser.readline()
 	term.estado = temperatura.decode('utf-8')
 	term.save()
-	return HttpResponse(request,{t:term.estado})
+	return HttpResponse(request,{'t':term.estado})
