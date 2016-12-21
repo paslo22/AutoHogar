@@ -1,0 +1,28 @@
+<div class="col s12 m4 l3">
+	<div class="card light sticky-action hoverable" id="{{d.id}}">
+		<div class="card-image">
+			<div class="activador red lighten-2" style="width:100%;height:120px;{% if not d.luz.estado %}display:none;{% endif %}" id="encendido">
+				<h5 class="center-align" style="margin:0px;">
+					<i class="material-icons" style="font-size:120px;transform:rotate(180deg);">wb_incandescent</i>
+				</h5>
+			</div>
+			<div class="activador red darken-2" style="width:100%;height:120px;{% if d.luz.estado %}display:none;{% endif %}" id="apagado">
+				<h5 class="center-align" style="margin:0px;">
+					<i class="material-icons" style="font-size:120px;">lightbulb_outline</i>
+				</h5>
+			</div>
+		</div>
+		<div class="card-content">
+			<span class="card-title activator grey-text text-darken-4">{{d.nombre}}<i class="material-icons right">more_vert</i></span>
+		</div>
+		<div class="card-reveal">
+			<span class="card-title grey-text text-darken-4">{{d.nombre}}<i class="material-icons right">close</i></span>
+			<p>I am a very simple card. I am good at containing small bits of information.I am convenient because I require little markup to use effectively.</p>
+		</div>
+		<div class="card-action" style="height:63px;">
+			<p class="range-field" style="margin-top:0px;margin-bottom:0px;" id="rangeRed">
+				<input type="range" value="{{d.luzd.estado}}" min="0" max="255" />
+			</p>
+		</div>
+	</div>
+</div>

@@ -14,6 +14,16 @@ class Luz(Dispositivo):
 		verbose_name='luz'
 		verbose_name_plural='luces'
 
+class LuzD(Dispositivo):
+	estado = models.PositiveSmallIntegerField()
+
+	def __str__(self):
+		return '%s' % (self.nombre)
+
+	class Meta:
+		verbose_name='luz D'
+		verbose_name_plural='luces D'
+
 class Garage(Dispositivo):
 	estado = models.BooleanField()
 
@@ -23,3 +33,13 @@ class Garage(Dispositivo):
 	class Meta:
 		verbose_name='garage'
 		verbose_name_plural='garage'
+
+class Termometro(Dispositivo):
+	estado = models.SmallIntegerField()
+
+	def __str__(self):
+		return '%s' % (self.nombre)
+
+	class Meta:
+		verbose_name='termometro'
+		verbose_name_plural='termometros'

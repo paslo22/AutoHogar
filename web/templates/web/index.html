@@ -17,8 +17,14 @@
 				{% if d.garage %}
 					{% include "web/garage.html" %}
 				{% endif %}
+				{% if d.luzd %}
+					{% include "web/lightD.html" %}
+				{% endif %}
 				{% if d.luz %}
 					{% include "web/light.html" %}
+				{% endif %}
+				{% if d.termometro %}
+					{% include "web/term.html" %}
 				{% endif %}
 			{% endfor %}
 		</div>

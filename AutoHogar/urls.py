@@ -20,5 +20,6 @@ from web import urls as web_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^web/', include(web_urls))
+    url(r'^web/', include(web_urls)),
+    url('^', include('django.contrib.auth.urls')),
 ]
