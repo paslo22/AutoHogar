@@ -7,7 +7,7 @@ import serial,time
 
 from .models import *
 
-# ser = serial.Serial('/dev/ttyACM0',9600)
+ser = serial.Serial('/dev/ttyACM0',9600)
 
 @login_required
 def index(request):
@@ -40,4 +40,15 @@ def garage(request):
 		garage.estado = False
 	ser.write(bytes(sal,'utf-8'))
 	garage.save()
+	return HttpResponse(request)
+
+@csrf_exempt
+def termometro(request):
+	id = request.GET.get('id')
+	print(id)
+	term = Termometro.objects.get(pk=id)
+	ser.write(bytes(term.nombDisp,'utf-8'))
+	temperatura = ser.readline()
+	print(temperatura)
+	term.save()
 	return HttpResponse(request)
