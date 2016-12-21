@@ -45,10 +45,9 @@ def garage(request):
 @csrf_exempt
 def termometro(request):
 	id = request.GET.get('id')
-	print(id)
 	term = Termometro.objects.get(pk=id)
 	ser.write(bytes(term.nombDisp,'utf-8'))
 	temperatura = ser.readline()
-	print(temperatura)
+	term.estado = temperatura.decode('utf-8')
 	term.save()
-	return HttpResponse(request)
+	return HttpResponse(request,{t:term.estado})
