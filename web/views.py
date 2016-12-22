@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
 
 import serial,time
@@ -50,4 +50,4 @@ def termometro(request):
 	temperatura = ser.readline()
 	term.estado = temperatura.decode('utf-8')
 	term.save()
-	return HttpResponse(request,{'t':term.estado})
+	return JsonResponse({'t':term.estado})
