@@ -1,14 +1,15 @@
 $(document).ready(function() {
-//	var temps = $('.temp');
+	var temps = $('.temp');
 //	$.each(temps, function(index, val) {
+	if (temps.length) {
 		setTimeout(obtenerTemp,2000)
+	}
 //	});
 });
 
 function obtenerTemp() {
+	setTimeout(obtenerTemp,25000)
 	$.get('termometro/', {id:$('.temp').prop('id')}, function(data) {
-		console.log(data)
 		$('.tempText').text(data['t']+'°C')
-		setTimeout(obtenerTemp,25000)
 	});
 };
