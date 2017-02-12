@@ -8,7 +8,7 @@ $(document).ready(function() {
 });
 
 function obtenerTemp() {
-	setTimeout(obtenerTemp,25000)
+	setTimeout(obtenerTemp,60000)
 	$.get('termometro/', {id:$('.temp').prop('id')}, function(data) {
 		$('.tempText').text(data['t']+'°C')
 	});
