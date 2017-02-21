@@ -18,21 +18,26 @@
 </head>
 <body>
 	<ul id="dropdown1" class="dropdown-content">
+		<li><a href="{% url 'addHouse' %}">Agregar casa</a></li>
+		<li><a href="">Agregar dispositivo</a></li>
+		<li><a href="">Crear nueva lista</a></li>
+		<li class="divider"></li>
 		<li><a href="{% url 'logout' %}?next={{request.path}}">Salir</a></li>
 	</ul>
-	<ul id="dropdown2" class="dropdown-content">
-		<li><a href="{% url 'logout' %}?next={{request.path}}">salir</a></li>
+	<ul id="mobile" class="side-nav">
+		<li><a href="{% url 'addHouse' %}">Agregar casa</a></li>
+		<li><a href="">Agregar dispositivo</a></li>
+		<li><a href="">Crear nueva lista</a></li>
+		<li class="divider"></li>
+		<li><a href="{% url 'logout' %}?next={{request.path}}">Salir</a></li>
 	</ul>
 	<nav class="light-blue darken-4" role="navigation">
-		<div class="nav-wrapper container"><a id="logo-container" href="{% url 'index' %}" class="brand-logo"><i class="material-icons">home</i><strong>AutoHogar</strong></a>
+		<div class="nav-wrapper container"><a id="logo-container" href="{% url 'casas' %}" class="brand-logo"><i class="material-icons">home</i><strong>AutoHogar</strong></a>
 		{% if user.is_authenticated %}
+			<a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 			<ul class="right hide-on-med-and-down">
 				<li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{user}}<i class="material-icons right">arrow_drop_down</i></a></li>
 			</ul>
-			<ul id="nav-mobile" class="side-nav">
-				<li><a class="dropdown-button" href="#!" data-activates="dropdown2">{{user}}<i class="material-icons right">arrow_drop_down</i></a></li>
-			</ul>
-			<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 		{% endif %}
 		</div>
 	</nav>
@@ -49,6 +54,13 @@
 	<script type="text/javascript" src="{% static 'web/js/vendor/jquery-3.1.1.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'web/js/vendor/materialize.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'web/js/main.js' %}"></script>
+	<script type="text/javascript">
+		{% if messages %}
+			{% for message in messages %}
+				Materialize.toast("{{message}}", 4000);
+			{% endfor %}
+		{% endif %}
+	</script>
 
 	{% block extraScripts %}{% endblock extraScripts %}
 </body>

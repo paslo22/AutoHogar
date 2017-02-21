@@ -3,17 +3,15 @@
 
 {% block title %}Inicio | Automatizaci&oacute;n del hogar{% endblock title %}
 
-{% block activeInicio %}active{% endblock activeInicio %}
-
 {% block content %}
 <div class="container">
-	<div class="section" style="padding-left:10px;padding-right:10px;">
+	<div class="section">
 		<div class="row">
-			<h3 class="center-align"><strong>Dispositivos</strong></h3>
+			<h3 class="center-align"><strong>Dispositivos {{disp.nombre}}</strong></h3>
 		</div>
 		<div class="divider"></div>
 		<div class="row">
-			{% for d in disp %}
+			{% for d in disp.dispositivo_set.all %}
 				{% if d.garage %}
 					{% include "web/garage.html" %}
 				{% endif %}

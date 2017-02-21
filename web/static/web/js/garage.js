@@ -4,11 +4,11 @@ $(document).ready(function() {
 		var garage = this
 		$('.abrirG',garage).click(function(event) {
 			event.preventDefault();
-			$.post('garage/', {id:$('input',$(this)).val(),op:'abrir'});
+			$.post('/web/garage/', {id:$('input',$(this)).val(),op:'abrir'});
 		});
 		$('.cerrarG',garage).click(function(event) {
 			event.preventDefault();
-			$.post('garage/', {id:$('input',$(this)).val(),op:'cerrar'});
+			$.post('/web/garage/', {id:$('input',$(this)).val(),op:'cerrar'});
 		});
 	});
 });

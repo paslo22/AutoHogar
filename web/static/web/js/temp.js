@@ -9,7 +9,7 @@ $(document).ready(function() {
 
 function obtenerTemp() {
 	setTimeout(obtenerTemp,60000)
-	$.get('termometro/', {id:$('.temp').prop('id')}, function(data) {
+	$.get('/web/termometro/', {id:$('.temp').prop('id')}, function(data) {
 		$('.tempText').text(data['t']+'°C')
 	});
 };
