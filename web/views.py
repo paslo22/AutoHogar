@@ -15,7 +15,7 @@ from .models import *
 def index(request,housePk):
 	house = get_object_or_404(Casa, pk=housePk)
 	user = request.user
-	return render(request, 'web/index.html', {'disp':house})
+	return render(request, 'web/index.html', {'house':house})
 
 @login_required
 def casas(request):
