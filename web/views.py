@@ -22,9 +22,7 @@ def casas(request):
 	user = request.user
 	houses = Casa.objects.filter(user__username=user)
 	if not houses:
-		#Redirect to create new House
-		print('No hay casas')
-		pass
+		return redirect('addHouse')
 	elif houses.count() == 1:
 		return redirect('dispositivos')
 	else:
