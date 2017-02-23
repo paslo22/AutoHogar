@@ -7,11 +7,11 @@
 <div class="container">
 	<div class="section">
 		<div class="row">
-			<h3 class="center-align"><strong>Dispositivos {{disp.nombre}}</strong></h3>
+			<h3 class="center-align"><strong>Dispositivos {{house.nombre}}</strong></h3>
 		</div>
 		<div class="divider"></div>
 		<div class="row">
-			{% for d in disp.dispositivo_set.all %}
+			{% for d in house.dispositivo_set.all %}
 				{% if d.garage %}
 					{% include "web/garage.html" %}
 				{% endif %}
@@ -25,15 +25,48 @@
 					{% include "web/term.html" %}
 				{% endif %}
 			{% endfor %}
+			<div class="col s12 m4 l3">
+				<div class="card hoverable">
+					<div class="card-image">
+						<div class="green lighten-2" style="width:100%;">
+							<h5 class="center-align" style="margin:0px;">
+								<i class="material-icons large" >add</i>
+							</h5>
+						</div>
+					</div>
+					<div class="card-content">
+						<span class="card-title grey-text text-darken-4">Agregar disp.</span>
+					</div>
+					<div class="card-action">
+						<a href="{% url 'addDev' house.pk %}">Agregar</a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>	
-</div>	
+	<div class="section">
+		<div class="row">
+			<h3 class="center-align"><strong>Rutinas</strong></h3>
+		</div>
+		<div class="divider"></div>
+		<div class="row">
+			{% for r in house.rutinas_set.all %}
+				{% include "web/routine.html" %}
+			{% endfor %}
+		</div>
+	</div>
+</div>
 {% endblock content %}
 
 {% block extraScripts %}
 	<script type="text/javascript" src="{% static 'web/js/light.js' %}"></script>
 	<script type="text/javascript" src="{% static 'web/js/garage.js' %}"></script>
 	<script type="text/javascript" src="{% static 'web/js/temp.js' %}"></script>
+	<script>
+		$(document).ready(function(){
+			$('.modal').modal();
+		});
+	</script>
 {% endblock extraScripts %}
 
 {#

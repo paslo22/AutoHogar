@@ -12,7 +12,7 @@ from .models import *
 # ser = serial.Serial('/dev/ttyACM0',9600)
 
 @login_required
-def index(request,housePk):
+def index(request, housePk):
 	house = get_object_or_404(Casa, pk=housePk)
 	user = request.user
 	return render(request, 'web/index.html', {'house':house})
@@ -43,6 +43,38 @@ def addHouse(request):
 		c.save()
 		messages.info(request,'Casa creada correctamente.')
 		return redirect('casas')
+
+@login_required
+def addDev(request, housePk):
+	house = get_object_or_404(Casa, pk=housePk)
+	if request.method == 'GET':
+		return render(request, 'web/addDev.html', {'house':house})
+	elif request.method == 'POST':
+		type_dev = request.POST.get('type_dev','')
+		name = request.POST.get('name','')
+		name_dev = request.POST.get('name_dev','')
+		if type_dev == 'garage':
+			dev = Garage(casa=house, nombre=name, nombre_disp=name_dev, estado=False)
+		elif type_dev == 'light':
+			dev = Luz(casa=house, nombre=name, nombre_disp=name_dev, estado=False)
+		elif type_dev == 'ther':
+			dev = Termometro(casa=house, nombre=name, nombre_disp=name_dev, estado=20)
+		else:
+			messages.info(request,'Dispositivo no implementado aún.')
+			return redirect('dispositivos', housePk=house.pk)			
+		dev.save()
+		messages.info(request,'Dispositivo creado correctamente.')
+		return redirect('dispositivos', housePk=house.pk)
+	else:
+		messages.info(request, 'Operación inválida.')
+		return redirect('dispositivos', housePk=house.pk)
+
+@login_required
+def removeDev(request, housePk, devPk):
+	dev = get_object_or_404(Dispositivo, pk=devPk)
+	dev.delete()
+	messages.info(request, 'Dispositivo borrado correctamente.')
+	return redirect('dispositivos', housePk)
 
 @csrf_exempt
 def luz(request):

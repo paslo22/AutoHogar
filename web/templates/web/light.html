@@ -18,6 +18,7 @@
 		<div class="card-reveal">
 			<span class="card-title grey-text text-darken-4">{{d.nombre}}<i class="material-icons right">close</i></span>
 			<p>{# Here will go a simple description #}</p>
+			<a href="#modal{{d.pk}}" class="waves-effect waves-light btn red"><strong>Eliminar</strong></a>
 		</div>
 		<div class="card-action">
 			<div class="switch right-align" id="switchRed">
@@ -28,5 +29,16 @@
 				{% endif %}
 			</div>
 		</div>
+	</div>
+</div>
+<!-- Modal Structure -->
+<div id="modal{{d.pk}}" class="modal">
+	<div class="modal-content">
+		<h4>¿Est&aacute; seguro que desea eliminar el dispositivo {{d.nombre}}?</h4>
+		<p>Esta acci&oacute;n <strong>no puede ser deshecha.</strong></p>
+	</div>
+	<div class="modal-footer">
+		<a href="{% url 'removeDev' house.pk d.pk %}" class=" modal-action modal-close waves-effect waves-light btn red">Eliminar</a>
+		<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
 	</div>
 </div>
