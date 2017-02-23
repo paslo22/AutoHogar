@@ -17,25 +17,32 @@
 
 </head>
 <body>
+	<!--CONTENT OF DROPDOWN FOR USER -->
 	<ul id="dropdown1" class="dropdown-content">
-		<li><a href="{% url 'addHouse' %}">Agregar casa</a></li>
-		<li><a href="">Agregar dispositivo</a></li>
-		<li><a href="">Crear nueva lista</a></li>
-		<li class="divider"></li>
 		<li><a href="{% url 'logout' %}?next={{request.path}}">Salir</a></li>
 	</ul>
+	<!--END CONTENT OF DROPDOWN FOR USER -->
+	<!--NAV FOR MOBILE-->
 	<ul id="mobile" class="side-nav">
 		<li><a href="{% url 'addHouse' %}">Agregar casa</a></li>
-		<li><a href="">Agregar dispositivo</a></li>
-		<li><a href="">Crear nueva lista</a></li>
+		{% if house %}
+			<li><a href="{% url 'addDev' house.pk %}">Agregar dispositivo</a></li>
+			<li><a href="">Crear rutina</a></li>
+		{% endif %}
 		<li class="divider"></li>
 		<li><a href="{% url 'logout' %}?next={{request.path}}">Salir</a></li>
 	</ul>
+	<!--END NAV FOR MOBILE-->
 	<nav class="light-blue darken-4" role="navigation">
 		<div class="nav-wrapper container"><a id="logo-container" href="{% url 'casas' %}" class="brand-logo"><i class="material-icons">home</i><strong>AutoHogar</strong></a>
 		{% if user.is_authenticated %}
 			<a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 			<ul class="right hide-on-med-and-down">
+				<li><a href="{% url 'addHouse' %}">Agregar casa</a></li>
+				{% if house %}
+					<li><a href="{% url 'addDev' house.pk %}">Agregar dispositivo</a></li>
+					<li><a href="">Crear rutina</a></li>
+				{% endif %}
 				<li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{user}}<i class="material-icons right">arrow_drop_down</i></a></li>
 			</ul>
 		{% endif %}
