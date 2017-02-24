@@ -24,7 +24,7 @@ def casas(request):
 	if not houses:
 		return redirect('addHouse')
 	elif houses.count() == 1:
-		return redirect('dispositivos')
+		return redirect('dispositivos', housePk=houses[0].pk)
 	else:
 		return render(request, 'web/casas.html', {'houses':houses})
 
