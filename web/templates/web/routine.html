@@ -1,5 +1,8 @@
-<div class="col s12 m4 l3">
-	<div class="card hoverable">
-		{# TODO #}
+<a href="{% url 'runRutina' r.pk %}" class="rutina col s12 m4 l3">
+	<div class="card light sticky-action hoverable " id="{{d.id}}">
+		<div class="card-panel amber">
+			<p class="center white-text" style="font-size:35px;margin:0px;">{{r.nombre}}</p>
+			<p class="center white-text" style="font-size:35px;margin:0px;"><i class="material-icons" style="font-size:120px;">exit_to_app</i></p>
+		</div>
 	</div>
-</div>
+</a>

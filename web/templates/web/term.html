@@ -1,8 +1,23 @@
 <div class="col s12 m4 l3">
 	<div class="card temp light sticky-action hoverable" id="{{d.id}}">
 		<div class="card-panel teal">
-			<p class="center white-text" style="font-size:20px;">Temperatura: {{d.nombre}}</p>
-			<span style="font-size:80px;" class="white-text tempText">{{d.termometro.estado}}°C</span>
+			<p class="center white-text" style="font-size:35px;margin:0px;">{{d.nombre}}</p>
+			<p class="center white-text" style="font-size:25px;">Actual: <span class="white-text tempText">{{d.termometro.estado}}°C</span></p>
+			<div class="row">
+				<div class="col s12">
+					<span class="white-text" style="font-size:20px;">Deseada: </span>
+						{{d.tempDeseada}}
+					<select class="right col s6">
+						{% for t in rangeTemp %}
+							{% if t == d.termometro.tempDeseada %}
+								<option value="{{t}}" selected>{{t}}°C</option>
+							{% else %}
+								<option value="{{t}}">{{t}}°C</option>
+							{% endif %}
+						{% endfor %}
+					</select>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

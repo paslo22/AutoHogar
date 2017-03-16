@@ -12,4 +12,7 @@ urlpatterns = [
     url(r'^addDev/(?P<housePk>[0-9]+)/$', views.addDev, name='addDev'),
     url(r'^removeDev/(?P<housePk>[0-9]+)/(?P<devPk>[0-9]+)/$',
         views.removeDev, name='removeDev'),
+    url(r'^tempDeseada/$', views.tempDeseada, name='tempDeseada'),
+    url(r'^runRoutine/(?P<id>[0-9]+)/$',
+        views.runRutina, name='runRutina'),
 ]

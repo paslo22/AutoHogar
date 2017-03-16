@@ -1,0 +1,34 @@
+<div class="col s12 m4 l3">
+	<div class="card sticky-action hoverable" id="{{d.id}}">
+		<div class="card-image">
+			<div class="activador deep-purple lighten-2" style="width:100%;">
+				<h5 class="center-align" style="margin:0px;">
+					<i class="material-icons large">ac_unit</i>
+				</h5>
+			</div>					
+		</div>
+		<div class="card-content">
+			<span class="card-title activator grey-text text-darken-4">{{d.nombre}}<i class="material-icons right">more_vert</i></span>
+		</div>
+		<div class="card-reveal">
+			<span class="card-title grey-text text-darken-4">{{d.nombre}}<i class="material-icons right">close</i></span>
+			<p></p>
+			<a href="#modal{{d.pk}}" class="waves-effect waves-light btn red"><strong>Eliminar</strong></a>
+		</div>
+		<div class="card-action">
+			<a href=""><input hidden value='{{d.aire.id}}'>Encender</a>
+			<a href="" class='right' style="margin-right:0px;"><input hidden value='{{d.aire.id}}'>Apagar</a>
+		</div>
+	</div>
+</div>
+<!-- Modal Structure -->
+<div id="modal{{d.pk}}" class="modal">
+	<div class="modal-content">
+		<h4>¿Est&aacute; seguro que desea eliminar el dispositivo {{d.nombre}}?</h4>
+		<p>Esta acci&oacute;n <strong>no puede ser deshecha.</strong></p>
+	</div>
+	<div class="modal-footer">
+		<a href="{% url 'removeDev' house.pk d.pk %}" class=" modal-action modal-close waves-effect waves-light btn red">Eliminar</a>
+		<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+	</div>
+</div>

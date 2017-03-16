@@ -15,7 +15,10 @@ from .models import *
 @login_required
 def index(request, housePk):
     house = get_object_or_404(Casa, pk=housePk)
-    return render(request, 'web/index.html', {'house': house})
+    return render(request, 'web/index.html', {
+        'house': house,
+        'rangeTemp': range(16, 30)
+    })
 
 
 @login_required
@@ -65,6 +68,9 @@ def addDev(request, housePk):
         elif type_dev == 'ther':
             dev = Termometro(casa=house, nombre=name,
                              nombre_disp=name_dev, estado=20)
+        elif type_dev == 'aire':
+            dev = Aire(casa=house, nombre=name,
+                       nombre_disp=name_dev, estado=False)
         else:
             messages.info(request, 'Dispositivo no implementado aún.')
             return redirect('dispositivos', housePk=house.pk)
@@ -107,3 +113,19 @@ def termometro(request):
     term = Termometro.objects.get(pk=id)
     term.update_state()
     return JsonResponse({'t': term.estado})
+
+
+@csrf_exempt
+def tempDeseada(request):
+    id = request.POST.get('id')
+    tempDeseada = request.POST.get('tempDeseada')
+    term = Termometro.objects.get(pk=id)
+    term.sendDesired(tempDeseada)
+    return HttpResponse(request)
+
+
+@csrf_exempt
+def runRutina(request, id):
+    rutina = get_object_or_404(Rutina, pk=id)
+    rutina.run()
+    return HttpResponse(request)

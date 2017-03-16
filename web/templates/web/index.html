@@ -24,6 +24,9 @@
 				{% if d.termometro %}
 					{% include "web/term.html" %}
 				{% endif %}
+				{% if d.aire %}
+					{% include "web/aire.html" %}
+				{% endif %}
 			{% endfor %}
 			<div class="col s12 m4 l3">
 				<div class="card hoverable">
@@ -50,7 +53,7 @@
 		</div>
 		<div class="divider"></div>
 		<div class="row">
-			{% for r in house.rutinas_set.all %}
+			{% for r in house.rutina_set.all %}
 				{% include "web/routine.html" %}
 			{% endfor %}
 		</div>
@@ -62,6 +65,7 @@
 	<script type="text/javascript" src="{% static 'web/js/light.js' %}"></script>
 	<script type="text/javascript" src="{% static 'web/js/garage.js' %}"></script>
 	<script type="text/javascript" src="{% static 'web/js/temp.js' %}"></script>
+	<script type="text/javascript" src="{% static 'web/js/rutina.js' %}"></script>
 	<script>
 		$(document).ready(function(){
 			$('.modal').modal();
