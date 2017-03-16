@@ -128,6 +128,8 @@ class Rutina(models.Model):
         Dispositivo,
         through='RutinasxDispositivos'
     )
+    icono = models.CharField(max_length=20)
+    color = models.CharField(max_length=20)
 
     def run(self):
         pass
