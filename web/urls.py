@@ -9,6 +9,8 @@ urlpatterns = [
     url(r'^garage/$', views.garage, name='garage'),
     url(r'^termometro/$', views.termometro, name='termometro'),
     url(r'^addHouse/$', views.addHouse, name='addHouse'),
+    url(r'^addRoutine/(?P<housePk>[0-9]+)/$',
+        views.addRoutine, name='addRoutine'),
     url(r'^addDev/(?P<housePk>[0-9]+)/$', views.addDev, name='addDev'),
     url(r'^removeDev/(?P<housePk>[0-9]+)/(?P<devPk>[0-9]+)/$',
         views.removeDev, name='removeDev'),

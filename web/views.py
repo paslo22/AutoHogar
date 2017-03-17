@@ -83,6 +83,36 @@ def addDev(request, housePk):
 
 
 @login_required
+def addRoutine(request, housePk):
+    house = get_object_or_404(Casa, pk=housePk)
+    if request.method == 'GET':
+        icons = ['exit_to_app', 'home', 'thumb_up', 'vpn_key', 'snooze',
+                 'today', 'done', 'games', 'visibility', 'alarm_on',
+                 'schedule', 'new_releases', 'done_all', 'location_on',
+                 'stars', 'lock_outline', 'loop', 'info'
+                 ]
+        colors = ['amber', 'red', 'pink', 'purple', 'indigo', 'blue',
+                  'cyan', 'teal', 'green', 'lime', 'yellow', 'orange'
+                  ]
+        return render(request, 'web/addRoutine.html', {
+            'icons': icons,
+            'colors': colors,
+            'house': house,
+        })
+    elif request.method == 'POST':
+        name = request.POST.get('name', '')
+        color = request.POST.get('color', '')
+        icono = request.POST.get('icono', '')
+        routine = Rutina(casa=house, nombre=name, icono=icono, color=color)
+        routine.save()
+        messages.info(request, 'Rutina creada correctamente.')
+        return redirect('dispositivos', housePk=house.pk)
+    else:
+        messages.info(request, 'Operación inválida.')
+        return redirect('dispositivos', housePk=house.pk)
+
+
+@login_required
 def removeDev(request, housePk, devPk):
     dev = get_object_or_404(Dispositivo, pk=devPk)
     dev.delete()

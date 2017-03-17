@@ -1,0 +1,89 @@
+{% extends "web/base.html" %}
+
+{% block title %}Crear rutina | AutoHogar{% endblock title %}
+
+{% block content %}
+<div class="container">
+	<div class="section">
+		<div class="row">
+			<h3 class="center-align"><strong>Crear rutina</strong></h3>
+		</div>
+		<div class="divider"></div>
+		<div class="row">
+			<form class="col s8 offset-s2" method="POST">
+				{% csrf_token %}
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="name" name="name" type="text" class="validate">
+						<label for="name">Nombre</label>
+					</div>
+				</div>
+				<p>Icono:</p>
+				<div class="row">
+					{% for icon in icons %}
+						<p class="col s4 m2">
+							{% if forloop.first %}
+								<input name="icono" value="{{icon}}" type="radio" id="{{icon}}" checked/>	
+							{% else %}
+								<input name="icono" value="{{icon}}" type="radio" id="{{icon}}" />
+							{% endif %}
+						<label for="{{icon}}"><i class="material-icons black-text small">{{icon}}</i></label>
+						</p>
+					{% endfor %}
+				</div>
+				<p>Color de la tarjeta:</p>
+				<div class="row">
+					{% for color in colors %}
+						<h6 class="col s6 m3 {{color}}">
+							{% if forloop.first %}
+								<input name="color" value="{{color}}" type="radio" id="{{color}}" checked/>
+							{% else %}
+								<input name="color" value="{{color}}" type="radio" id="{{color}}" />
+							{% endif %}
+							<label for="{{color}}" class="white-text">{{color}}</label>
+						</h6>
+					{% endfor %}
+				</div>
+				<p>Dispositivos y acciones:</p>
+				<div class="row">
+					{% for d in house.dispositivo_set.all %}
+						{% if not d.termometro %}
+						<p>
+      						<input type="checkbox" id="{{d.pk}}" />
+      						<label for="{{d.pk}}">{{d.nombre}}</label>
+    					</p>
+						<div class="input-field col s12">
+							<select disabled id='select-{{d.pk}}'>
+								<option value="" disabled selected>Elija la acci&oacute;n a realizar</option>
+								{% if d.garage  %}
+									<option value="1">Abrir</option>
+									<option value="2">Cerrar</option>
+								{% endif %}
+								{% if d.luz or d.aire or d.luzd %}
+									<option value="1">Encender</option>
+									<option value="2">Apagar</option>
+								{% endif %}
+							</select>
+							<label>Acci&oacute;n</label>
+						</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+				<button class="btn waves-effect waves-light" type="submit">Crear<i class="material-icons right">send</i></button>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock content %}
+
+{% block extraScripts %}
+	<script>
+		$(document).ready(function() {
+			$('select').material_select();
+			$('input:checkbox').click(function(event) {
+				$('#select-'+$(this).attr('id')).prop('disabled', function(i, v) { return !v; });
+				$('#select-'+$(this).attr('id')).material_select();
+			});
+		});
+	</script>
+{% endblock extraScripts %}
